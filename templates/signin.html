@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="application/javascript">
+      async function request_signin(){
+        console.log("test");
+        try {
+          let alias = document.getElementById("alias").value;
+          console.log("ALIAS: ",alias)
+          let passphrase = document.getElementById("passphrase").value;
+          console.log("ALIAS: ",passphrase)
+          const response = await fetch("/api/auth/signin",{
+            method:'POST',
+            headers:{
+              "Content-Type":"application/json",
+            },
+            body: JSON.stringify({
+              alias:alias,
+              passphrase:passphrase
+            })
+          });
+          const data = await response.json();
+          console.log(data);
+          if(data){
+            if(data.api == 'PASS'){
+              console.log("PASS")
+            }
+            if(data.api == 'FAIL'){
+              console.log("FAIL")
+              document.location.href = "/";
+            }
+          }
+        } catch (error) {
+          console.log("error: ",error)
+        }
+        
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label>Alias:</label>
+            </td>
+            <td>
+              <input id="alias" value="test">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label>Pass:</label>
+            </td>
+            <td>
+              <input id="passphrase" value="pass">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <button onclick="request_signin();">Login</button>
+              <button>Cancel</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
