@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+{% block head %}
+{{ super() }}
     <script type="application/javascript">
       async function request_signup(){
         console.log("test");
@@ -23,9 +25,8 @@
         console.log(movies);
       }
     </script>
-  </head>
-  <body>
-    <div>
+{% endblock %}
+{% block content %}
       <table>
         <tbody>
           <tr>
@@ -54,6 +55,4 @@
           </tr>
         </tbody>
       </table>
-    </div>
-  </body>
-</html>
+{% endblock %}

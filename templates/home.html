@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
-  </head>
-  <body>
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
     <div>
       <a href="/">Home</a>
       <a href="/signout">Sign Out</a>
@@ -15,6 +16,4 @@
     <div>
       <label>Python, FastAPI, SQL</label>
     </div>
-    
-  </body>
-</html>
+{% endblock %}

@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
+{% extends "base.html" %}
+
+{% block title %}Sign In{% endblock %}
+{% block head %}
+{{ super() }}
     <script type="application/javascript">
       async function request_signin(){
         console.log("test");
@@ -24,6 +26,7 @@
           if(data){
             if(data.api == 'PASS'){
               console.log("PASS")
+              document.location.href = "/";
             }
             if(data.api == 'FAIL'){
               console.log("FAIL")
@@ -36,9 +39,8 @@
         
       }
     </script>
-  </head>
-  <body>
-    <div>
+{% endblock %}
+{% block content %}
       <table>
         <tbody>
           <tr>
@@ -67,6 +69,4 @@
           </tr>
         </tbody>
       </table>
-    </div>
-  </body>
-</html>
+{% endblock %}
